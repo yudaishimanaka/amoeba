@@ -1,0 +1,2 @@
+# amoeba
+kvm base VPS
