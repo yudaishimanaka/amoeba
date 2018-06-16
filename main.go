@@ -1,49 +1,80 @@
 package main
 
 import (
+	"encoding/json"
+	"io/ioutil"
 	"log"
+	"net/http"
 
-	"github.com/lxc/lxd/client"
-	"github.com/lxc/lxd/shared/api"
+	"github.com/gin-gonic/gin"
+	_ "github.com/go-sql-driver/mysql"
+	"github.com/go-xorm/xorm"
 )
 
+type Config struct {
+	DbConfig Database `json:"db"`
+}
+
+type Database struct {
+	User     string `json:"user"`
+	Password string `json:"password"`
+	DbName   string `json:"db_name"`
+}
+
+type User struct {
+	UserId   uint64 `xorm:"not null BIGINT pk autoincr 'user_id'"`
+	UserName string `xorm:"not null unique 'user_name'"`
+	Email    string `xorm:"not null TEXT 'email'"`
+	IconPath string `xorm:"null TEXT 'icon_path'"`
+}
+
+func initDatabase(driver, user, password, dbname string, config Config) (e *xorm.Engine, err error) {
+	engine, err := xorm.NewEngine(driver, user+":"+password+"@/")
+	if err != nil {
+		return nil, err
+	}
+
+	if _, err := engine.Exec("CREATE DATABASE " + dbname); err != nil {
+		log.Printf("Database already exists.")
+		return engine, nil
+	} else {
+		engine.Exec("USE " + dbname)
+		engine.CreateTables(User{})
+		log.Printf("Success initialize.")
+
+		return engine, nil
+	}
+}
+
 func main() {
-	c, err := lxd.ConnectLXDUnix("", nil)
+	// Unmarshal config.json
+	file, err := ioutil.ReadFile("config.json")
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	req := api.ContainersPost{
-		Name: "test-container",
-		Source: api.ContainerSource{
-			Type: "image",
-			Alias: "ubuntu-16-04",
-		},
-	}
+	var config Config
+	json.Unmarshal(file, &config)
 
-	op, err := c.CreateContainer(req)
+	// Init database
+	engine, err := initDatabase("mysql", config.DbConfig.User, config.DbConfig.Password, config.DbConfig.DbName, config)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatal(engine)
 	}
 
-	err = op.Wait()
-	if err != nil {
-		log.Fatal(err)
-	}
+	// Gin start
+	r := gin.Default()
+	r.LoadHTMLGlob("templates/*")
 
-	reqState := api.ContainerStatePut{
-		Action: "start",
-		Timeout: -1,
-	}
+	r.GET("/", func(c *gin.Context) {
+		c.Redirect(http.StatusMovedPermanently, "top")
+	})
 
-	op, err = c.UpdateContainerState("test-container", reqState, "")
-	if err != nil {
-		log.Fatal(err)
-	}
+	r.GET("/top", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "top.html", gin.H{"title": "Amoeba - Top"})
+	})
 
-	err = op.Wait()
-	if err != nil {
-		log.Fatal(err)
-	}
+	r.Static("/assets", "./assets")
 
+	r.Run(":8080")
 }
