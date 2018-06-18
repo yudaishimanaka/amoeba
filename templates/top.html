@@ -20,24 +20,62 @@
     </style>
 </head>
 
-<body class="grey lighten-3">
+<body class="grey lighten-2">
 <header>
-    <ul id="slide-out" class="sidenav sidenav-fixed">
-        <li><a href="#!">コンテナ</a></li>
-        <li><a href="#!">スナップショット</a></li>
-        <li><a href="#!">設定</a></li>
+    <ul id="slide-out" class="sidenav sidenav-fixed blue-grey darken-3">
+        <li class="logo">
+            <div class="row">
+                <div class="col s4 m4 l4">
+
+                </div>
+                <div class="col s8 m8 l8">
+                    <h4 class="white-text">Amoeba</h4>
+                </div>
+            </div>
+        </li>
+        <li><a href="#!" class="white-text">コンテナ一覧</a></li>
+        <li><a href="#!" class="white-text">スナップショット</a></li>
+        <li><a href="#!" class="white-text">設定</a></li>
     </ul>
 </header>
 <main>
     <div class="navbar-fixed">
         <nav>
-            <div class="nav-wrapper">
+            <div class="nav-wrapper blue-grey darken-4">
                 <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             </div>
         </nav>
     </div>
-    <div class="container">
-        <h1>コンテナ</h1>
+    <div class="container" style="width: 90%;">
+        <h5>コンテナ一覧</h5>
+        <table class="highlight">
+            <thead>
+            <tr>
+                <th>名前</th>
+                <th>状態</th>
+                <th>IPv4アドレス</th>
+                <th>スナップショット数</th>
+                <th>作成日</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr>
+                <td>study-kernel</td>
+                <td><span class="new badge" data-badge-caption="">RUNNING</span></td>
+                <td>163.138.193.242</td>
+                <td>1</td>
+                <td>2018/06/17</td>
+            </tr>
+            <tr>
+                <td>study-kernel2</td>
+                <td><span class="new badge red" data-badge-caption="">STOP</span></td>
+                <td>163.138.193.234</td>
+                <td>2</td>
+                <td>2018/06/17</td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </main>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
