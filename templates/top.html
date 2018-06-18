@@ -24,16 +24,16 @@
 <header>
     <ul id="slide-out" class="sidenav sidenav-fixed blue-grey darken-3">
         <li class="logo">
-            <div class="row">
-                <div class="col s4 m4 l4">
-
+            <div class="row" style="margin-bottom: 0px;">
+                <div class="col s3 m3 l3">
+                    <img src="assets/images/amoeba.png">
                 </div>
-                <div class="col s8 m8 l8">
-                    <h4 class="white-text">Amoeba</h4>
+                <div class="col s9 m9 l9">
+                    <h3 class="white-text center">Amoeba</h3>
                 </div>
             </div>
         </li>
-        <li><a href="#!" class="white-text">コンテナ一覧</a></li>
+        <li><a href="#!" class="white-text">コンテナ管理</a></li>
         <li><a href="#!" class="white-text">スナップショット</a></li>
         <li><a href="#!" class="white-text">設定</a></li>
     </ul>
@@ -54,11 +54,10 @@
                 <th>名前</th>
                 <th>状態</th>
                 <th>IPv4アドレス</th>
-                <th>スナップショット数</th>
+                <th>スナップショット</th>
                 <th>作成日</th>
             </tr>
             </thead>
-
             <tbody>
             <tr>
                 <td>study-kernel</td>
@@ -92,6 +91,16 @@
     $(document).ready(function(){
         $('.sidenav').sidenav();
     });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.dropdown-trigger');
+        var instances = M.Dropdown.init(elems, options);
+    });
+
+    // Or with jQuery
+
+    $('.dropdown-trigger').dropdown();
 </script>
 </body>
 </html>
