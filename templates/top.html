@@ -33,9 +33,50 @@
                 </div>
             </div>
         </li>
-        <li><a href="#!" class="white-text">コンテナ管理</a></li>
-        <li><a href="#!" class="white-text">スナップショット</a></li>
-        <li><a href="#!" class="white-text">設定</a></li>
+        <ul class="collapsible" data-collapsible="accordion">
+            <li>
+                <div class="collapsible-header waves-effect white-text"><b>コンテナ</b></div>
+                <div class="collapsible-body">
+                    <ul>
+                        <li>
+                            <a class="waves-effect blue-grey darken-2 white-text" style="text-decoration: none;" href="#!">コンテナ一覧</a>
+                        </li>
+
+                        <li>
+                            <a class="waves-effect blue-grey darken-2 white-text" style="text-decoration: none;" href="#!">コンテナ作成</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <div class="collapsible-header waves-effect white-text"><b>スナップショット</b></div>
+                <div class="collapsible-body">
+                    <ul>
+                        <li>
+                            <a class="waves-effect blue-grey darken-2 white-text" style="text-decoration: none;" href="#!">スナップショット一覧</a>
+                        </li>
+
+                        <li>
+                            <a class="waves-effect blue-grey darken-2 white-text" style="text-decoration: none;" href="#!">コンテナの復元</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <div class="collapsible-header waves-effect white-text"><b>設定</b></div>
+                <div class="collapsible-body">
+                    <ul>
+                        <li>
+                            <a class="waves-effect blue-grey darken-2 white-text" style="text-decoration: none;" href="#!">設定1</a>
+                        </li>
+
+                        <li>
+                            <a class="waves-effect blue-grey darken-2 white-text" style="text-decoration: none;" href="#!">設定2</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
     </ul>
 </header>
 <main>
@@ -101,6 +142,18 @@
     // Or with jQuery
 
     $('.dropdown-trigger').dropdown();
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.collapsible');
+        var instances = M.Collapsible.init(elems, options);
+    });
+
+    // Or with jQuery
+
+    $(document).ready(function(){
+        $('.collapsible').collapsible();
+    });
 </script>
 </body>
 </html>
