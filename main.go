@@ -67,11 +67,11 @@ func main() {
 	r.LoadHTMLGlob("templates/*")
 
 	r.GET("/", func(c *gin.Context) {
-		c.Redirect(http.StatusMovedPermanently, "top")
+		c.Redirect(http.StatusMovedPermanently, "container-list")
 	})
 
-	r.GET("/top", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "top.html", gin.H{"title": "Amoeba - Top"})
+	r.GET("/container-list", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "container-list.html", gin.H{"title": "Amoeba - Container-list"})
 	})
 
 	r.Static("/assets", "./assets")
