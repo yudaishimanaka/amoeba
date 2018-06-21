@@ -67,7 +67,7 @@ func main() {
 	r.LoadHTMLGlob("templates/*")
 
 	r.GET("/", func(c *gin.Context) {
-		c.Redirect(http.StatusMovedPermanently, "container-list")
+		c.Redirect(http.StatusMovedPermanently, "/container-list")
 	})
 
 	r.GET("/container-list", func(c *gin.Context) {
