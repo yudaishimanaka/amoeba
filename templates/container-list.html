@@ -1,162 +1,30 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
-    <!--Import Google Icon Font-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--Let browser know website is optimized for mobile-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <style>
-        header, main, footer {
-            padding-left: 300px;
-        }
-
-        @media only screen and (max-width : 992px) {
-            header, main, footer {
-                padding-left: 0;
-            }
-        }
-        *:focus {
-            outline: none;
-        }
-    </style>
-</head>
-
-<body class="grey lighten-2">
-<header>
-    <ul id="slide-out" class="sidenav sidenav-fixed blue-grey darken-3">
-        <li class="logo">
-            <div class="row" style="margin-bottom: 0px;">
-                <div class="col s3 m3 l3">
-                    <img src="assets/images/amoeba.png">
-                </div>
-                <div class="col s9 m9 l9">
-                    <h3 class="white-text center">Amoeba</h3>
-                </div>
-            </div>
-        </li>
-        <ul class="collapsible" data-collapsible="accordion">
-            <li>
-                <div class="collapsible-header waves-effect white-text"><b>コンテナ</b></div>
-                <div class="collapsible-body">
-                    <ul>
-                        <li>
-                            <a class="waves-effect blue-grey darken-2 white-text" style="text-decoration: none;" href="#!">コンテナ一覧</a>
-                        </li>
-
-                        <li>
-                            <a class="waves-effect blue-grey darken-2 white-text" style="text-decoration: none;" href="#!">コンテナ作成</a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            <li>
-                <div class="collapsible-header waves-effect white-text"><b>スナップショット</b></div>
-                <div class="collapsible-body">
-                    <ul>
-                        <li>
-                            <a class="waves-effect blue-grey darken-2 white-text" style="text-decoration: none;" href="#!">スナップショット一覧</a>
-                        </li>
-
-                        <li>
-                            <a class="waves-effect blue-grey darken-2 white-text" style="text-decoration: none;" href="#!">コンテナの復元</a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            <li>
-                <div class="collapsible-header waves-effect white-text"><b>設定</b></div>
-                <div class="collapsible-body">
-                    <ul>
-                        <li>
-                            <a class="waves-effect blue-grey darken-2 white-text" style="text-decoration: none;" href="#!">設定1</a>
-                        </li>
-
-                        <li>
-                            <a class="waves-effect blue-grey darken-2 white-text" style="text-decoration: none;" href="#!">設定2</a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-        </ul>
-    </ul>
-</header>
-<main>
-    <div class="navbar-fixed">
-        <nav>
-            <div class="nav-wrapper blue-grey darken-4">
-                <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-            </div>
-        </nav>
-    </div>
-    <div class="container" style="width: 90%;">
-        <h5>コンテナ一覧</h5>
-        <table class="highlight">
-            <thead>
-            <tr>
-                <th>名前</th>
-                <th>状態</th>
-                <th>IPv4アドレス</th>
-                <th>スナップショット</th>
-                <th>作成日</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>study-kernel</td>
-                <td><span class="new badge" data-badge-caption="">RUNNING</span></td>
-                <td>163.138.193.242</td>
-                <td>1</td>
-                <td>2018/06/17</td>
-            </tr>
-            <tr>
-                <td>study-kernel2</td>
-                <td><span class="new badge red" data-badge-caption="">STOP</span></td>
-                <td>163.138.193.234</td>
-                <td>2</td>
-                <td>2018/06/17</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-</main>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
-<!-- Compiled and minified JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var elems = document.querySelectorAll('.sidenav');
-        var instances = M.Sidenav.init(elems, options);
-    });
-
-    // Or with jQuery
-
-    $(document).ready(function(){
-        $('.sidenav').sidenav();
-    });
-</script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var elems = document.querySelectorAll('.dropdown-trigger');
-        var instances = M.Dropdown.init(elems, options);
-    });
-
-    // Or with jQuery
-
-    $('.dropdown-trigger').dropdown();
-</script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var elems = document.querySelectorAll('.collapsible');
-        var instances = M.Collapsible.init(elems, options);
-    });
-
-    // Or with jQuery
-
-    $(document).ready(function(){
-        $('.collapsible').collapsible();
-    });
-</script>
-</body>
-</html>
+{{define "container-list"}}
+<h5>コンテナ一覧</h5>
+<table class="highlight">
+    <thead>
+    <tr>
+        <th>名前</th>
+        <th>状態</th>
+        <th>IPv4アドレス</th>
+        <th>スナップショット</th>
+        <th>作成日</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>study-kernel</td>
+        <td><span class="new badge" data-badge-caption="">RUNNING</span></td>
+        <td>163.138.193.242</td>
+        <td>1</td>
+        <td>2018/06/17</td>
+    </tr>
+    <tr>
+        <td>study-kernel2</td>
+        <td><span class="new badge red" data-badge-caption="">STOP</span></td>
+        <td>163.138.193.234</td>
+        <td>2</td>
+        <td>2018/06/17</td>
+    </tr>
+    </tbody>
+</table>
+{{end}}
