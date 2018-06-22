@@ -83,6 +83,12 @@ func main() {
 		c.HTML(http.StatusOK, "base.html", gin.H{})
 	})
 
+	r.GET("/snapshot-list", func(c *gin.Context) {
+		html := template.Must(template.ParseFiles("templates/base.html", "templates/snapshot-list.html"))
+		r.SetHTMLTemplate(html)
+		c.HTML(http.StatusOK, "base.html", gin.H{})
+	})
+
 	r.Static("/assets", "./assets")
 
 	r.Run(":8080")
