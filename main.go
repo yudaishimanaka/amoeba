@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"html/template"
 
 	"github.com/gin-gonic/gin"
 	_ "github.com/go-sql-driver/mysql"
@@ -64,14 +65,16 @@ func main() {
 
 	// Gin start
 	r := gin.Default()
-	r.LoadHTMLGlob("templates/*")
+	r.LoadHTMLGlob("templates/*.html")
 
 	r.GET("/", func(c *gin.Context) {
 		c.Redirect(http.StatusMovedPermanently, "/container-list")
 	})
 
 	r.GET("/container-list", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "container-list.html", gin.H{"title": "Amoeba - Container-list"})
+		html := template.Must(template.ParseFiles("templates/base.html", "templates/container-list.html"))
+		r.SetHTMLTemplate(html)
+		c.HTML(http.StatusOK, "base.html", gin.H{})
 	})
 
 	r.Static("/assets", "./assets")
