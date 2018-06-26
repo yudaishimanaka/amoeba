@@ -1,0 +1,38 @@
+::-webkit-scrollbar {
+    overflow: hidden;
+    width: 10px;
+    background: whitesmoke;
+
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+    ::-webkit-scrollbar:horizontal {
+        height: 10px;
+    }
+
+::-webkit-scrollbar-button {
+    display: none;
+}
+
+::-webkit-scrollbar-track-piece {
+    background: whitesmoke;
+}
+    ::-webkit-scrollbar-track-piece:start {
+        background: grey;
+    }
+
+::-webkit-scrollbar-thumb {
+    overflow: hidden;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+
+    background: darkgrey;
+}
+
+::-webkit-scrollbar-corner {
+    overflow: hidden;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+
+    background: lightgrey;
+}
