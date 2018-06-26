@@ -77,12 +77,6 @@ func main() {
 		c.HTML(http.StatusOK, "base.html", gin.H{})
 	})
 
-	r.GET("/container-create", func(c *gin.Context) {
-		html := template.Must(template.ParseFiles("templates/base.html", "templates/container-create.html"))
-		r.SetHTMLTemplate(html)
-		c.HTML(http.StatusOK, "base.html", gin.H{})
-	})
-
 	r.GET("/snapshot-list", func(c *gin.Context) {
 		html := template.Must(template.ParseFiles("templates/base.html", "templates/snapshot-list.html"))
 		r.SetHTMLTemplate(html)
