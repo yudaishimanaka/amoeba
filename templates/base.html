@@ -48,30 +48,6 @@
                         <li>
                             <a class="waves-effect blue-grey darken-2 white-text" style="text-decoration: none;" href="/container-list">study-kernel2</a>
                         </li>
-                        <li>
-                            <a class="waves-effect blue-grey darken-2 white-text" style="text-decoration: none;" href="/container-list">study-kernel</a>
-                        </li>
-                        <li>
-                            <a class="waves-effect blue-grey darken-2 white-text" style="text-decoration: none;" href="/container-list">study-kernel2</a>
-                        </li>
-                        <li>
-                            <a class="waves-effect blue-grey darken-2 white-text" style="text-decoration: none;" href="/container-list">study-kernel</a>
-                        </li>
-                        <li>
-                            <a class="waves-effect blue-grey darken-2 white-text" style="text-decoration: none;" href="/container-list">study-kernel2</a>
-                        </li>
-                        <li>
-                            <a class="waves-effect blue-grey darken-2 white-text" style="text-decoration: none;" href="/container-list">study-kernel</a>
-                        </li>
-                        <li>
-                            <a class="waves-effect blue-grey darken-2 white-text" style="text-decoration: none;" href="/container-list">study-kernel2</a>
-                        </li>
-                        <li>
-                            <a class="waves-effect blue-grey darken-2 white-text" style="text-decoration: none;" href="/container-list">study-kernel</a>
-                        </li>
-                        <li>
-                            <a class="waves-effect blue-grey darken-2 white-text" style="text-decoration: none;" href="/container-list">study-kernel2</a>
-                        </li>
                     </ul>
                 </div>
             </li>
@@ -118,9 +94,18 @@
         {{template "content"}}
     </div>
     <div class="fixed-action-btn">
-        <a class="btn-floating btn-large waves-effect waves-light grey darken-3">
+        <a class="btn-floating btn-large waves-effect waves-light grey darken-3 modal-trigger" href="#modal1">
             <i class="large material-icons">mode_edit</i>
         </a>
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+                <h4>コンテナ作成</h4>
+                <p>A bunch of text</p>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat">作成</a>
+            </div>
+        </div>
     </div>
 </main>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
