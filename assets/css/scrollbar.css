@@ -18,7 +18,7 @@
     background: whitesmoke;
 }
     ::-webkit-scrollbar-track-piece:start {
-        background: grey;
+        background: whitesmoke;
     }
 
 ::-webkit-scrollbar-thumb {
