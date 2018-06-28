@@ -71,6 +71,12 @@ func main() {
 		c.Redirect(http.StatusMovedPermanently, "/container-list")
 	})
 
+	r.GET("/container-board", func(c *gin.Context) {
+		html := template.Must(template.ParseFiles("templates/base.html", "templates/container-board.html"))
+		r.SetHTMLTemplate(html)
+		c.HTML(http.StatusOK, "base.html", gin.H{})
+	})
+
 	r.GET("/container-list", func(c *gin.Context) {
 		html := template.Must(template.ParseFiles("templates/base.html", "templates/container-list.html"))
 		r.SetHTMLTemplate(html)
