@@ -20,22 +20,6 @@
         *:focus {
             outline: none;
         }
-        .modal {
-            overflow: visible;
-        }
-        .preloader-background {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #eee;
-
-            position: fixed;
-            z-index: 100;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-        }
     </style>
     <link rel="stylesheet" href="assets/css/scrollbar.css">
 </head>
@@ -54,6 +38,13 @@
             </div>
         </li>
         <ul class="collapsible" data-collapsible="accordion">
+            <a href="/container-board">
+                <li>
+                    <div class="collapsible-header waves-effect white-text">
+                        <b>コンテナボード</b>
+                    </div>
+                </li>
+            </a>
             <li>
                 <div class="collapsible-header waves-effect white-text"><b>コンテナ一覧</b></div>
                 <div class="collapsible-body">
@@ -114,7 +105,7 @@
             <i class="large material-icons">playlist_add</i>
         </a>
     </div>
-    <div id="modal1" class="modal" style="height: 100%;">
+    <div id="modal1" class="modal">
         <div class="modal-content">
             <h5>コンテナ作成</h5>
             <div class="row">
@@ -132,13 +123,28 @@
                         </select>
                     </div>
                     <div class="input-field col s12">
-
+                        <p>コア数</p>
+                        <p class="range-field">
+                            <input type="range" id="cpu" min="1" max="4">
+                        </p>
+                    </div>
+                    <div class="input-field col s12">
+                        <p>メモリ (MB)</p>
+                        <p class="range-field">
+                            <input type="range" id="cpu" min="512" max="1024">
+                        </p>
+                    </div>
+                    <div class="input-field col s12">
+                        <p>ディスク容量 (GB)</p>
+                        <p class="range-field">
+                            <input type="range" id="cpu" min="10" max="30">
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
         <div class="modal-footer">
-            <a class="modal-close waves-effect btn-flat modal-action">キャンセル</a>
+            <a class="modal-close waves-effect btn-flat modal-action create-cancel">キャンセル</a>
             <a class="modal-close waves-effect btn-flat modal-action create-container">作成</a>
         </div>
     </div>
