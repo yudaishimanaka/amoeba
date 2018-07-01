@@ -50,10 +50,10 @@
                 <div class="collapsible-body">
                     <ul>
                         <li>
-                            <a class="waves-effect blue-grey darken-2 white-text" style="text-decoration: none;" href="/container-list">study-kernel</a>
+                            <a class="waves-effect blue-grey darken-2 white-text" style="text-decoration: none;" href="/container-list">test-container</a>
                         </li>
                         <li>
-                            <a class="waves-effect blue-grey darken-2 white-text" style="text-decoration: none;" href="/container-list">study-kernel2</a>
+                            <a class="waves-effect blue-grey darken-2 white-text" style="text-decoration: none;" href="/container-list">test-container2</a>
                         </li>
                     </ul>
                 </div>
@@ -97,7 +97,7 @@
             </div>
         </nav>
     </div>
-    <div class="container" style="width: 90%;">
+    <div class="container" style="width: 95%;">
         {{template "content"}}
     </div>
     <div class="fixed-action-btn">
@@ -221,6 +221,19 @@
     $(document).ready(function(){
         $('.fixed-action-btn').floatingActionButton();
     });
+</script>
+<script>
+    (function($) {
+        $(function() {
+            $(".dropdown-button").dropdown({
+                inDuration: 300,
+                outDuration: 225,
+                constrain_width: false,
+                belowOrigin: false,
+                alignment: 'left'
+            });
+        });
+    })(jQuery);
 </script>
 </body>
 </html>
