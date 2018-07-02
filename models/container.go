@@ -13,8 +13,3 @@ type Container struct {
 	Memory int32 `xorm:"memory not null"`
 	Disk int64 `xorm:"disk not null"`
 }
-
-type Image struct {
-	Id int64 `xorm:"not null BIGINT pk autoincr 'id'"`
-	Name string `xorm:"image_name not null"`
-}
