@@ -31,6 +31,7 @@ func initDatabase(driver, user, password, dbname string) (e *xorm.Engine, err er
 	} else {
 		engine.Exec("USE " + dbname)
 		engine.CreateTables(models.Container{})
+		engine.CreateTables(models.Image{})
 		log.Printf("Success initialize.")
 
 		return engine, nil
