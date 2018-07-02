@@ -13,7 +13,7 @@ func main() {
 	r.LoadHTMLGlob("templates/*.html")
 
 	r.GET("/", func(c *gin.Context) {
-		c.Redirect(http.StatusMovedPermanently, "/container-list")
+		c.Redirect(http.StatusMovedPermanently, "/container-board")
 	})
 
 	r.GET("/container-board", func(c *gin.Context) {
