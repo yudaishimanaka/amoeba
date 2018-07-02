@@ -39,7 +39,7 @@ func initDatabase(driver, user, password, dbname string) (e *xorm.Engine, err er
 
 func main(){
 	// Unmarshal config.json
-	file, err := ioutil.ReadFile("../config.json")
+	file, err := ioutil.ReadFile("config.json")
 	if err != nil {
 		log.Fatal(err)
 	}
