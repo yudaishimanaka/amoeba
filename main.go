@@ -12,27 +12,39 @@ func main() {
 	r := gin.Default()
 	r.LoadHTMLGlob("templates/*.html")
 
-	r.GET("/", func(c *gin.Context) {
-		c.Redirect(http.StatusMovedPermanently, "/container-board")
-	})
+	assets := r.Group("/")
+	{
+		assets.GET("/", func(c *gin.Context) {
+			c.Redirect(http.StatusMovedPermanently, "/container-board")
+		})
 
-	r.GET("/container-board", func(c *gin.Context) {
-		html := template.Must(template.ParseFiles("templates/base.html", "templates/container-board.html"))
-		r.SetHTMLTemplate(html)
-		c.HTML(http.StatusOK, "base.html", gin.H{})
-	})
+		assets.GET("/container-board", func(c *gin.Context) {
+			html := template.Must(template.ParseFiles("templates/base.html", "templates/container-board.html"))
+			r.SetHTMLTemplate(html)
+			c.HTML(http.StatusOK, "base.html", gin.H{})
+		})
 
-	r.GET("/container-list", func(c *gin.Context) {
-		html := template.Must(template.ParseFiles("templates/base.html", "templates/container-list.html"))
-		r.SetHTMLTemplate(html)
-		c.HTML(http.StatusOK, "base.html", gin.H{})
-	})
+		assets.GET("/container-list", func(c *gin.Context) {
+			html := template.Must(template.ParseFiles("templates/base.html", "templates/container-list.html"))
+			r.SetHTMLTemplate(html)
+			c.HTML(http.StatusOK, "base.html", gin.H{})
+		})
 
-	r.GET("/snapshot-list", func(c *gin.Context) {
-		html := template.Must(template.ParseFiles("templates/base.html", "templates/snapshot-list.html"))
-		r.SetHTMLTemplate(html)
-		c.HTML(http.StatusOK, "base.html", gin.H{})
-	})
+		assets.GET("/snapshot-list", func(c *gin.Context) {
+			html := template.Must(template.ParseFiles("templates/base.html", "templates/snapshot-list.html"))
+			r.SetHTMLTemplate(html)
+			c.HTML(http.StatusOK, "base.html", gin.H{})
+		})
+	}
+
+	v1Container := r.Group("/api/v1/container")
+	{
+		v1Container.GET("/fetchAll", fetchAllContainer)
+		v1Container.GET("/fetchSingle", fetchSingleContainer)
+		v1Container.POST("/create", createContainer)
+		v1Container.PUT("/update", updateContainer)
+		v1Container.DELETE("/remove", removeContainer)
+	}
 
 	r.Static("/assets", "./assets")
 
