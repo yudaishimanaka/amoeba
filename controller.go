@@ -2,7 +2,9 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/lxc/lxd/client"
 	"net/http"
+	"log"
 )
 
 // API for Container
@@ -11,7 +13,17 @@ func fetchAllContainer(c *gin.Context){
 }
 
 func fetchSingleContainer(c *gin.Context){
+	container, err := lxd.ConnectLXDUnix("", nil)
+	if err != nil {
+		log.Fatal(err)
+	}
 
+	list, err := container.GetContainers()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	c.JSON(http.StatusCreated, gin.H{"status": http.StatusCreated, "list": list})
 }
 
 func createContainer(c *gin.Context){
