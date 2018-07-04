@@ -21,7 +21,7 @@ func main() {
 		assets.GET("/container-board", func(c *gin.Context) {
 			html := template.Must(template.ParseFiles("templates/base.html", "templates/container-board.html"))
 			r.SetHTMLTemplate(html)
-			c.HTML(http.StatusOK, "base.html", gin.H{})
+			c.HTML(http.StatusOK, "base.html", gin.H{"containers": fetchAllContainer})
 		})
 
 		assets.GET("/container-list", func(c *gin.Context) {
