@@ -40,10 +40,10 @@ func main() {
 	v1 := r.Group("/api/v1")
 	{
 		v1.GET("/fetchAllContainer", fetchAllContainer)
-		v1.GET("/fetch/:name", fetchSingleContainer)
-		v1.POST("/create", createContainer)
-		v1.PUT("/update", updateContainer)
-		v1.DELETE("/remove", removeContainer)
+		v1.GET("/fetchContainer/:name", fetchSingleContainer)
+		v1.POST("/createContainer/:name", createContainer)
+		v1.PUT("/updateContainer/:name", updateContainer)
+		v1.DELETE("/removeContainer/:name", removeContainer)
 	}
 
 	r.Static("/assets", "./assets")
