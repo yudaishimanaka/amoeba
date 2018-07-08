@@ -11,12 +11,12 @@ import (
 func fetchAllContainer(c *gin.Context){
 	// Fetch all container information.
 
-	container, err := lxd.ConnectLXDUnix("", nil)
+	connection, err := lxd.ConnectLXDUnix("", nil)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	list, err := container.GetContainers()
+	list, err := connection.GetContainers()
 	if err != nil {
 		log.Fatal(err)
 	}
