@@ -25,7 +25,16 @@ func fetchAllContainer(c *gin.Context){
 }
 
 func fetchSingleContainer(c *gin.Context){
+	// Fetch a container information.
 
+	connection, err := lxd.ConnectLXDUnix("", nil)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	container, _, err := connection.GetContainer(c.Params.ByName("name"))
+
+	c.JSON(http.StatusCreated, gin.H{"status": http.StatusCreated, "container": container})
 }
 
 func createContainer(c *gin.Context){
