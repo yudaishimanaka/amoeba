@@ -93,10 +93,20 @@ func removeContainer(c *gin.Context){
 
 	name := c.Params.ByName("name")
 
-	op, err := connection.DeleteContainer(name)
+	op, err := connection.UpdateContainerState(name, api.ContainerStatePut{Action: "stop"}, "")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	opErr := op.Wait()
+	if opErr != nil {
+		log.Fatal(opErr)
+	}
+
+	op, err = connection.DeleteContainer(name)
 
 	// Wait op to complete.
-	opErr := op.Wait()
+	opErr = op.Wait()
 	if opErr != nil {
 		log.Fatal()
 	}
