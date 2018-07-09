@@ -22,9 +22,6 @@ func main() {
 		assets.GET("/container-board", func(c *gin.Context) {
 			html := template.Must(template.ParseFiles("templates/base.html", "templates/container-board.html"))
 			r.SetHTMLTemplate(html)
-			response := fetchAllContainer
-			log.Println(response)
-
 			c.HTML(http.StatusOK, "base.html", gin.H{"containers": "aaaaa"})
 		})
 
@@ -44,7 +41,7 @@ func main() {
 	v1 := r.Group("/api/v1")
 	{
 		v1.GET("/fetchAllContainer", fetchAllContainer)
-		v1.GET("/fetchContainer/:name", fetchSingleContainer)
+		v1.GET("/fetchSingleContainer", fetchSingleContainer)
 		v1.POST("/createContainer/:name", createContainer)
 		v1.PUT("/updateContainer/:name", updateContainer)
 		v1.DELETE("/removeContainer/:name", removeContainer)

@@ -5,6 +5,7 @@ import (
 	"github.com/lxc/lxd/client"
 	"net/http"
 	"log"
+	"github.com/lxc/lxd/shared/api"
 )
 
 // API for Container
@@ -38,7 +39,47 @@ func fetchSingleContainer(c *gin.Context){
 }
 
 func createContainer(c *gin.Context){
+	// Create a container.
 
+	connection, err := lxd.ConnectLXDUnix("", nil)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	req := api.ContainersPost{
+		Name: "test",
+		Source: api.ContainerSource{
+			Type: "image",
+			Alias: "ubuntu-16-04",
+		},
+	}
+
+	op, err := connection.CreateContainer(req)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// Wait op to complete.
+	opErr := op.Wait()
+	if opErr != nil {
+		log.Fatal(opErr)
+	}
+
+	reqState := api.ContainerStatePut{
+		Action: "start",
+		Timeout: -1,
+	}
+
+	op, err = connection.UpdateContainerState("test", reqState, "" )
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// Wait op to complete.
+	opErr = op.Wait()
+	if opErr != nil {
+		log.Fatal(opErr)
+	}
 }
 
 func removeContainer(c *gin.Context){
