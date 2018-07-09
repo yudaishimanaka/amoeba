@@ -85,7 +85,21 @@ func createContainer(c *gin.Context){
 }
 
 func removeContainer(c *gin.Context){
+	// Delete container.
+	connection, err := lxd.ConnectLXDUnix("", nil)
+	if err != nil {
+		log.Fatal(err)
+	}
 
+	name := c.Params.ByName("name")
+
+	op, err := connection.DeleteContainer(name)
+
+	// Wait op to complete.
+	opErr := op.Wait()
+	if opErr != nil {
+		log.Fatal()
+	}
 }
 
 func updateContainer(c *gin.Context){
