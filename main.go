@@ -3,6 +3,7 @@ package main
 import (
 	"net/http"
 	"html/template"
+	"log"
 
 	"github.com/gin-gonic/gin"
 )
@@ -22,7 +23,9 @@ func main() {
 			html := template.Must(template.ParseFiles("templates/base.html", "templates/container-board.html"))
 			r.SetHTMLTemplate(html)
 			response := fetchAllContainer
-			c.HTML(http.StatusOK, "base.html", gin.H{"containers": response})
+			log.Println(response)
+
+			c.HTML(http.StatusOK, "base.html", gin.H{"containers": "aaaaa"})
 		})
 
 		assets.GET("/container-list", func(c *gin.Context) {
