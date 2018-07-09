@@ -82,6 +82,8 @@ func createContainer(c *gin.Context){
 	if opErr != nil {
 		log.Fatal(opErr)
 	}
+
+	c.JSON(http.StatusCreated, gin.H{"status": http.StatusCreated, "response": "container creation successfully."})
 }
 
 func removeContainer(c *gin.Context){
@@ -110,6 +112,8 @@ func removeContainer(c *gin.Context){
 	if opErr != nil {
 		log.Fatal()
 	}
+
+	c.JSON(http.StatusCreated, gin.H{"status": http.StatusCreated, "response": "remove container successfully."})
 }
 
 func updateContainer(c *gin.Context){
