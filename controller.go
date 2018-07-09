@@ -46,8 +46,10 @@ func createContainer(c *gin.Context){
 		log.Fatal(err)
 	}
 
+	name := c.Params.ByName("name")
+
 	req := api.ContainersPost{
-		Name: "test",
+		Name: name,
 		Source: api.ContainerSource{
 			Type: "image",
 			Alias: "ubuntu-16-04",
@@ -70,7 +72,7 @@ func createContainer(c *gin.Context){
 		Timeout: -1,
 	}
 
-	op, err = connection.UpdateContainerState("test", reqState, "" )
+	op, err = connection.UpdateContainerState(name, reqState, "" )
 	if err != nil {
 		log.Fatal(err)
 	}
