@@ -3,7 +3,6 @@ package main
 import (
 	"net/http"
 	"html/template"
-	"log"
 
 	"github.com/gin-gonic/gin"
 )
