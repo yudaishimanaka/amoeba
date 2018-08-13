@@ -26,7 +26,7 @@ func main() {
 	})
 
 	r.GET("/board", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "board", FetchAllContainer)
+		c.HTML(http.StatusOK, "board", gin.H{})
 	})
 
 	r.GET("/list", func(c *gin.Context) {
