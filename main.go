@@ -33,9 +33,10 @@ func main() {
 		c.HTML(http.StatusOK, "list", gin.H{})
 	})
 
-	container := r.Group("/container")
+	info := r.Group("/info")
 	{
-		container.GET("/all", FetchAllContainer)
+		info.GET("/containers", FetchAllContainer)
+		info.GET("/container/:name", FetchSingleContainer)
 	}
 
 	r.Static("/assets", "./assets")
