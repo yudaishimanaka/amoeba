@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    fetch(window.location.protocol+'//'+window.location.host+'/info/containers')
+    fetch(window.location.protocol+'//'+window.location.host+'/api/containers')
         .then(function (response) {
             if(response.ok) {
                 return response.json();
