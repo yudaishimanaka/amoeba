@@ -33,10 +33,11 @@ func main() {
 		c.HTML(http.StatusOK, "list", gin.H{})
 	})
 
-	info := r.Group("/info")
+	api := r.Group("/api")
 	{
-		info.GET("/containers", FetchAllContainer)
-		info.GET("/container/:name", FetchSingleContainer)
+		api.GET("/containers", FetchAllContainer)
+		api.GET("/container/:name", FetchSingleContainer)
+		api.POST("/container/create", CreateContainer)
 	}
 
 	r.Static("/assets", "./assets")
