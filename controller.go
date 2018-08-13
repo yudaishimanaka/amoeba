@@ -24,7 +24,8 @@ func CreateContainer(c *gin.Context) {
 	}
 
 	var json CreateRequest
-	c.Bind(&json)
+	ret := c.Bind(&json)
+	log.Println(ret)
 
 	req := api.ContainersPost{
 		Name: json.ContainerName,
