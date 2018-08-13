@@ -24,7 +24,7 @@ func CreateContainer(c *gin.Context) {
 		Name: params.Get("container_name"),
 		Source: api.ContainerSource{
 			Type: "image",
-			Alias: params.Get("alias_name"),
+			Alias: "ubuntu-16-04",
 		},
 	}
 
