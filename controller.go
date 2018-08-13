@@ -9,6 +9,11 @@ import (
 	"github.com/lxc/lxd/client"
 )
 
+type CreateRequest struct {
+	ContainerName string `json:"container_name"`
+	AliasName	  string `json:"alias_name"`
+}
+
 // Container
 func CreateContainer(c *gin.Context) {
 	// Create a container
@@ -18,13 +23,14 @@ func CreateContainer(c *gin.Context) {
 		log.Fatal(err)
 	}
 
-	params := c.Request.URL.Query()
+	var json CreateRequest
+	c.Bind(&json)
 
 	req := api.ContainersPost{
-		Name: params.Get("container_name"),
+		Name: json.ContainerName,
 		Source: api.ContainerSource{
 			Type: "image",
-			Alias: "ubuntu-16-04",
+			Alias: json.AliasName,
 		},
 	}
 
@@ -43,7 +49,7 @@ func CreateContainer(c *gin.Context) {
 		Timeout: -1,
 	}
 
-	op, err = connection.UpdateContainerState(params.Get("container_name"), reqState, "")
+	op, err = connection.UpdateContainerState(json.ContainerName, reqState, "")
 	if err != nil {
 		log.Fatal(err)
 	}
