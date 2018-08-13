@@ -239,11 +239,10 @@
     $(document).ready(function () {
         fetch(window.location.protocol+'//'+window.location.host+'/info/containers')
                 .then(function (response) {
-                    console.log(response.json());
-                    var res = response.json();
-                    console.log(res.value().object);
-                    console.log(response.body);
                     return response.json();
+                })
+                .then(function (json) {
+                    console.log(json);
                 })
     })
 </script>
