@@ -237,7 +237,7 @@
 </script>
 <script>
     $(document).ready(function () {
-        fetch(window.location.protocol+'//'+window.location.host+'/containers')
+        fetch(window.location.protocol+'//'+window.location.host+'/info/containers')
                 .then(function (response) {
                     console.log(response.json());
                     return response.json();
