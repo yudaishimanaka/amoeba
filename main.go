@@ -14,6 +14,7 @@ import (
 	"github.com/go-xorm/xorm"
 	"github.com/lxc/lxd/client"
 	"github.com/lxc/lxd/shared/api"
+	_ "github.com/go-sql-driver/mysql"
 )
 
 type Config struct {
